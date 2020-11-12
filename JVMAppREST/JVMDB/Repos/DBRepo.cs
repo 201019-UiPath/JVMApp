@@ -5,7 +5,7 @@ using System.Text;
 
 namespace JVMDB.Repos
 {
-    class DBRepo : IProductRepo, IUserProductRepo, IUserRepo
+    public class DBRepo : IProductRepo, IUserProductRepo, IUserRepo
     {
         #region Product Methods
         public void AddProduct(Product product)
@@ -56,25 +56,14 @@ namespace JVMDB.Repos
         }
         #endregion
         #region UserProduct Methods
-
         public void DeleteUserProduct(UserProduct userProduct)
         {
             throw new NotImplementedException();
         }
-
-        
-
         public List<UserProduct> GetAllUserProducts()
         {
             throw new NotImplementedException();
         }
-
-        
-
-        
-
-        
-
         public UserProduct GetUserProduct(int userId, int productId)
         {
             throw new NotImplementedException();
@@ -84,11 +73,6 @@ namespace JVMDB.Repos
         {
             throw new NotImplementedException();
         }
-
-        
-
-        
-
         public void UpdateUserProduct(UserProduct userProduct)
         {
             throw new NotImplementedException();
