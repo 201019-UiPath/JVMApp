@@ -2,7 +2,7 @@
 // It should be used to get objects and MAYBE update error/success prompts that show the user the progress. 
 
 
-var baseUrl = "https://localhost:5001/api"
+var baseUrl = "https://localhost:44366/api"
 
 var CurrentUser;
 
@@ -15,7 +15,7 @@ function GetUserRequest()
     getData(`${baseUrl}/User/get/${userEmail}`)
     .then(
         result => {
-            let receiveduser = new User(result[0].name, result[0].email);
+            let receiveduser = new User(result.name, result.email);
             CurrentUser = receiveduser;
             console.log(result);
             DisplaySuccessfulSignIn();
