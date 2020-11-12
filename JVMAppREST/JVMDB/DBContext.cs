@@ -10,7 +10,7 @@ namespace JVMDB
         public DbSet<Product> Products { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserProduct> UserProducts { get; set; }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+/*        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!(optionsBuilder.IsConfigured))
             {
@@ -22,14 +22,14 @@ namespace JVMDB
                 var connectionString = configuration.GetConnectionString("StoreDB");
                 optionsBuilder.UseNpgsql(connectionString);
             }
-        }
+        }*/
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var userConverter = new Microsoft.EntityFrameworkCore.Storage.ValueConversion.EnumToStringConverter<User.UserType>();
+            var productConverter = new Microsoft.EntityFrameworkCore.Storage.ValueConversion.EnumToStringConverter<Product.Category>();
 
             modelBuilder.Entity<Product>()
                 .Property(u => u.category)
-                .HasConversion(userConverter);
+                .HasConversion(productConverter);
         }
     }
 }
