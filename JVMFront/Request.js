@@ -7,6 +7,7 @@ var baseUrl = "https://localhost:44366/api"
 var CurrentUser;
 
 var CustomerProducts;
+var AllProducts
 
 function GetUserRequest()
 {
@@ -23,6 +24,7 @@ function GetUserRequest()
                 DisplaySuccessfulSignIn();
                 CurrentUser = receiveduser;
                 CustomerProducts = GetUserProducts(CurrentUser);
+                AllProducts = GetAllProducts();
             }
             
         }, 
@@ -74,18 +76,22 @@ function GetAllProducts() {
 
 function GetUserProducts() {
     console.log("GetUserProducts");
-    debugger;
+    // debugger;
     let allProducts = [];
     getData(`${baseUrl}/UserProduct/get/${CurrentUser.Id}`).then(
         result => {
+            // debugger;
+            // console.log(result);
             result.forEach(element => {
-                allProducts.push(new UserProduct( element.id, CurrentUser, AllProducts.find(p=>p.id === element.productid) , element.quantity))
+                console.log(element.product);
+                allProducts.push(new UserProduct( element.id, CurrentUser.Id, CurrentUser, element.productId, element.product, element.quantity))
             });
-
-
+            console.log(allProducts);
             // TODO: Change HTML to show product options.
+            // AllProducts.find(p=>p.id === element.productid)
         },
         rejection => {
+            console.log('this didnt work')
             // TODO: Base jump with no parachute, I guess, I have no idea what to do here yet.
         }
     )

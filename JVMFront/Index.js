@@ -1,7 +1,9 @@
 // This file is both BL and UI changes based on user input. It's the controller.
 
+const { debug } = require("console");
 
-var AllProducts = GetAllProducts();
+
+// var AllProducts = GetAllProducts();
 
 function DisplaySuccessfulSignIn() {
     //TODO: Add more stuff for changing the UI to reflect a successful sign-in;
@@ -25,12 +27,13 @@ function DisplayAllProducts() {
     document.querySelector('#AllProductsSection').style = "display: inline";
     let products = [];
     products = AllProducts;
-    
+    debugger;
     let tableRowMarkup = '';
-    //console.log(products)
+    // console.log(products)
     //console.log("Products is " + products);
-    
+    // debugger;
     for (let index = 0; index < products.length; index++) {
+        // debugger;
         const element = products[index];
         console.log(1);
         tableRowMarkup += 
@@ -61,22 +64,25 @@ function DisplayAllProducts() {
 
 
 function DisplayUserProducts() {
-    CustomerProducts = GetUserProducts(CurrentUser);
+    // CustomerProducts = GetUserProducts();
+    console.log(CustomerProducts);
     ClearPrompts();
     document.querySelector('#AllProductsSection').style = "display:none"
     document.querySelector('#AllProductsSection').innerHTML = ""
     setTimeout(1000);
     document.querySelector('#UserProductsSection').style = "display: inline";
-    
-    var products = CustomerProducts;// GetUserProducts(CurrentUser);
+     
+    var products = CustomerProducts;
     var tableRowMarkup = [];
-
+    // debugger;
     products.forEach(element => {
+        console.log(element);
+        // debugger;
         tableRowMarkup.push(
             `<tr onclick='RemoveFromUserProducts(${element.Product})'>
-            <td>${element.Product.Name}</td>
-            <td>${element.Product.Category}</td>
-            <td>$${element.Product.Cost}</td>
+            <td>${element.Product.name}</td>
+            <td>${element.Product.category}</td>
+            <td>$${element.Product.cost}</td>
             <td>$${element.Quantity}</td>
         </tr>
         `
