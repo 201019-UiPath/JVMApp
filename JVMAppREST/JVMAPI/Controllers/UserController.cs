@@ -26,8 +26,13 @@ namespace JVMAPI.Controllers
         {
             try
             {
-                userService.AddUser(user);
-                return CreatedAtAction("AddUser", user);
+                var newUser = new User()
+                {
+                    name = user.name,
+                    email = user.email
+                };
+                userService.AddUser(newUser);
+                return CreatedAtAction("AddUser", newUser);
             }
             catch (Exception)
             {
