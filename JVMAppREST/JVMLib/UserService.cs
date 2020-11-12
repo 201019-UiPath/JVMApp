@@ -1,4 +1,5 @@
 ﻿using JVMDB.Models;
+using JVMDB.Repos;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -26,7 +27,6 @@ namespace JVMLib
         {
             throw new NotImplementedException();
         }
-
         public void UpdateUser(User user)
         {
             throw new NotImplementedException();
