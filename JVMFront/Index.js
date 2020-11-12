@@ -15,45 +15,60 @@ function DisplaySuccessfulSignIn() {
 function AddProductToList(id = -10) {
     //TODO: This function should add a UserProduct to the user's list.
     document.querySelector('#UserChoiceSuccess').innerHTML = "Adding product to user's list.."
-    AddToUserProducts(GetProduct(id));
+    AddToUserProducts(id);
 }
 
 function DisplayAllProducts() {
     ClearPrompts();
     document.querySelector('#UserProductsSection').style = "display:none";
     document.querySelector('#UserProductsSection').innerHTML = "";
+    document.querySelector('#AllProductsSection').style = "display: inline";
     let products = [];
-    products = GetAllProducts();
-    let tableRowMarkup = [];
-
-    products.forEach(element => {
-        tableRowMarkup.push(
-            `<tr onclick='AddProductToList(${element.Id})'>
+    products = AllProducts;
+    
+    let tableRowMarkup = '';
+    //console.log(products)
+    //console.log("Products is " + products);
+    
+    for (let index = 0; index < products.length; index++) {
+        const element = products[index];
+        console.log(1);
+        tableRowMarkup += 
+            `<tr onclick='AddProductToList(${index})'>
             <td>${element.Name}</td>
             <td>${element.Category}</td>
             <td>$${element.Cost}</td>
-        </tr>
-        `
-        )
+        </tr>`;
+    }
+    products.forEach(element => {
+        
+        
     });
-    var tableMarkup = `<table style="width:100%">
+    console.log(tableRowMarkup)
+    
+
+    let tableMarkup = `<table style="width:100%">
     <tr>
       <th>Name</th>
       <th>Category</th>
       <th>Cost</th>
     </tr>
-    ${tableRowMarkup.join('')}
+    ${tableRowMarkup}
   </table> `
-
+  
   document.querySelector('#AllProductsSection').innerHTML = tableMarkup;
 }
 
 
 function DisplayUserProducts() {
+    CustomerProducts = GetUserProducts(CurrentUser);
     ClearPrompts();
     document.querySelector('#AllProductsSection').style = "display:none"
     document.querySelector('#AllProductsSection').innerHTML = ""
-    var products = GetUserProducts(CurrentUser);
+    setTimeout(1000);
+    document.querySelector('#UserProductsSection').style = "display: inline";
+    
+    var products = CustomerProducts;// GetUserProducts(CurrentUser);
     var tableRowMarkup = [];
 
     products.forEach(element => {
