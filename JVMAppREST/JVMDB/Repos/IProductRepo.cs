@@ -4,7 +4,7 @@ using System.Text;
 
 namespace JVMDB.Repos
 {
-    interface IProduct
+    interface IProductRepo
     {
     }
 }

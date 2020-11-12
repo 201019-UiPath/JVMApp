@@ -4,7 +4,7 @@ using System.Text;
 
 namespace JVMDB.Repos
 {
-    interface IUser
+    interface IUserRepo
     {
     }
 }
