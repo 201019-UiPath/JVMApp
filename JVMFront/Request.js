@@ -6,7 +6,7 @@ var baseUrl = "https://localhost:44366/api"
 
 var CurrentUser;
 
-
+var CustomerProducts;
 
 function GetUserRequest()
 {
@@ -15,13 +15,14 @@ function GetUserRequest()
     getData(`${baseUrl}/User/get/${userEmail}`)
     .then(
         result => {
-            let receiveduser = new User(result.name, result.email);
+            let receiveduser = new User(result.id, result.name, result.email);
             
             console.log(result);
             
             if (result.id != null) {
                 DisplaySuccessfulSignIn();
                 CurrentUser = receiveduser;
+                CustomerProducts = GetUserProducts(CurrentUser);
             }
             
         }, 
@@ -56,7 +57,6 @@ function GetAllProducts() {
     let allProducts = [];
     getData(`${baseUrl}/Product/getAll`).then(
         result => {
-            console.log(result);
             result.forEach(element => {
                 allProducts.push(new Product( element.id, element.name, element.cost, element.category))
             });
@@ -65,20 +65,20 @@ function GetAllProducts() {
             
         },
         rejection => {
-            
+            console.log("no work :(");
             // TODO: Base jump with no parachute, I guess, I have no idea what to do here yet.
         }
     )
     return allProducts;
 }
 
-function GetUserProducts(user = {}) {
+function GetUserProducts() {
     console.log("GetUserProducts");
     let allProducts = [];
-    getData(`${baseUrl}/User/products/get/${user.Email}`).then(
+    getData(`${baseUrl}/UserProduct/get/${CurrentUser.Id}`).then(
         result => {
             result.forEach(element => {
-                allProducts.push(new UserProduct( element.id, user, AllProducts.find(p=>p.id === element.productid) , element.quantity))
+                allProducts.push(new UserProduct( element.id, CurrentUser, AllProducts.find(p=>p.id === element.productid) , element.quantity))
             });
 
 
@@ -105,8 +105,15 @@ function GetProduct(id = -5) {
     return null;
 }
 
-function AddToUserProducts(product= {}) {
-    postData(`${baseUrl}/User/products/add/${CurrentUser.Id}`, product).then(
+function AddToUserProducts(i=-1) {
+    let userProduct = {
+        id: 0,
+        customerId: CurrentUser.Id,
+        productId: AllProducts[i].Id,
+        quantity: 1
+    }
+
+    postData(`${baseUrl}/UserProduct/add`, userProduct).then(
         result => {
 
             // TODO: Change HTML to show successful product addition.

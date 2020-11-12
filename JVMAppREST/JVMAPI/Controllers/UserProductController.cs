@@ -24,8 +24,14 @@ namespace JVMAPI.Controllers
         {
             try
             {
+                var newUserProduct = new UserProduct()
+                {
+                    userId = userProduct.userId,
+                    productId = userProduct.productId,
+                    quantity = userProduct.quantity
+                };
                 userProductService.AddUserProduct(userProduct);
-                return CreatedAtAction("AddUser", userProduct);
+                return CreatedAtAction("AddUserProduct", userProduct);
             }
             catch (Exception)
             {
