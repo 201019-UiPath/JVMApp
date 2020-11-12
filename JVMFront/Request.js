@@ -31,7 +31,7 @@ function GetUserRequest()
 async function SignUpRequest() {
     let userName = document.querySelector('#SignUpNameInput').value;
     let userEmail = document.querySelector('#SignUpEmailInput').value;
-    let user = new User(-69, userName, userEmail);
+    let user = new User(0, userName, userEmail);
 
     await postData(`${baseUrl}/User/add`, user).then(
         result => {
