@@ -1,7 +1,7 @@
 // This file is both BL and UI changes based on user input. It's the controller.
 
 
-
+var AllProducts = GetAllProducts();
 
 function DisplaySuccessfulSignIn() {
     //TODO: Add more stuff for changing the UI to reflect a successful sign-in;
@@ -18,14 +18,14 @@ function AddProductToList(id = -10) {
     AddToUserProducts(GetProduct(id));
 }
 
-async function DisplayAllProducts() {
+function DisplayAllProducts() {
     ClearPrompts();
     document.querySelector('#UserProductsSection').style = "display:none";
     document.querySelector('#UserProductsSection').innerHTML = "";
-    var products = await GetAllProducts();
-    var tableRowMarkup = [];
+    let products = GetAllProducts();
+    let tableRowMarkup = [];
 
-    await products.forEach(element => {
+    products.forEach(element => {
         tableRowMarkup.push(
             `<tr onclick='AddProductToList(${element.Id})'>
             <td>${element.Name}</td>
@@ -48,14 +48,14 @@ async function DisplayAllProducts() {
 }
 
 
-async function DisplayUserProducts() {
+function DisplayUserProducts() {
     ClearPrompts();
     document.querySelector('#AllProductsSection').style = "display:none"
     document.querySelector('#AllProductsSection').innerHTML = ""
-    var products = await GetUserProducts(CurrentUser);
+    var products = GetUserProducts(CurrentUser);
     var tableRowMarkup = [];
 
-    await products.forEach(element => {
+    products.forEach(element => {
         tableRowMarkup.push(
             `<tr onclick='RemoveFromUserProducts(${element.Product})'>
             <td>${element.Product.Name}</td>

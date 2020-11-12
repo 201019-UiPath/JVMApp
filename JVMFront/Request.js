@@ -6,7 +6,7 @@ var baseUrl = "https://localhost:44366/api"
 
 var CurrentUser;
 
-var AllProducts = GetAllProducts();
+
 
 function GetUserRequest()
 {
@@ -16,9 +16,14 @@ function GetUserRequest()
     .then(
         result => {
             let receiveduser = new User(result.name, result.email);
-            CurrentUser = receiveduser;
+            
             console.log(result);
-            DisplaySuccessfulSignIn();
+            
+            if (result.id != null) {
+                DisplaySuccessfulSignIn();
+                CurrentUser = receiveduser;
+            }
+            
         }, 
         rejection => {
             // TODO: Change the HTML to reflect a failed sign-in.
@@ -28,12 +33,12 @@ function GetUserRequest()
 }
 
 
-async function SignUpRequest() {
+function SignUpRequest() {
     let userName = document.querySelector('#SignUpNameInput').value;
     let userEmail = document.querySelector('#SignUpEmailInput').value;
     let user = new User(-69, userName, userEmail);
 
-    await postData(`${baseUrl}/User/add`, user).then(
+    postData(`${baseUrl}/User/add`, user).then(
         result => {
             
             // TODO: Change HTML to reflect successful signup.
@@ -45,26 +50,32 @@ async function SignUpRequest() {
 
 }
 
-async function GetAllProducts() {
+function GetAllProducts() {
     // TODO: Arrange elements that need to be modified and added when the products are received.
+    
     let allProducts = [];
-    await getData(`${baseUrl}/Product/getall`).then(
+    getData(`${baseUrl}/Product/getAll`).then(
         result => {
+            console.log(result);
             result.forEach(element => {
                 allProducts.push(new Product( element.id, element.name, element.cost, element.category))
             });
+            console.log(allProducts);
+            console.log("GetAllProducts");
             return allProducts;
         },
         rejection => {
+            
             // TODO: Base jump with no parachute, I guess, I have no idea what to do here yet.
         }
     )
     return null;
 }
 
-async function GetUserProducts(user = {}) {
+function GetUserProducts(user = {}) {
+    console.log("GetUserProducts");
     let allProducts = [];
-    await getData(`${baseUrl}/User/products/get/${user.Email}`).then(
+    getData(`${baseUrl}/User/products/get/${user.Email}`).then(
         result => {
             result.forEach(element => {
                 allProducts.push(new UserProduct( element.id, user, AllProducts.find(p=>p.id === element.productid) , element.quantity))
