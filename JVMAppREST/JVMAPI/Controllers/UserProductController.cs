@@ -24,12 +24,12 @@ namespace JVMAPI.Controllers
         {
             try
             {
-                var newUserProduct = new UserProduct()
-                {
-                    userId = userProduct.userId,
-                    productId = userProduct.productId,
-                    quantity = userProduct.quantity
-                };
+                //var newUserProduct = new UserProduct()
+                //{
+                //    userId = userProduct.userId,
+                //    productId = userProduct.productId,
+                //    quantity = userProduct.quantity
+                //};
                 userProductService.AddUserProduct(userProduct);
                 return CreatedAtAction("AddUserProduct", userProduct);
             }

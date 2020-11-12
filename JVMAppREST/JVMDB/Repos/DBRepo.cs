@@ -92,20 +92,36 @@ namespace JVMDB.Repos
         }
         public List<UserProduct> GetAllUserProducts()
         {
-            return context.UserProducts.Select(x => x).ToList();
+            return context.UserProducts
+                .Select(x => x)
+                .Include(x => x.product)
+                .Include(x => x.user)
+                .ToList();
         }
         public List<UserProduct> GetAllProductsForUser(int userId)
         {
-            return context.UserProducts.Where(x => x.userId == userId).ToList();
+            return context.UserProducts
+                .Where(x => x.userId == userId)
+                .Include(x => x.product)
+                .Include(x => x.user)
+                .ToList();
         }
         public UserProduct GetUserProduct(int userId, int productId)
         {
-            return context.UserProducts.Single(p => p.userId == userId && p.productId == productId);
+            return context.UserProducts
+                .Where(p => p.userId == userId && p.productId == productId)
+                .Include(x => x.product)
+                .Include(x => x.user)
+                .First();
         }
 
         public UserProduct GetUserProductById(int id)
         {
-            return context.UserProducts.Single(p => p.id == id);
+            return context.UserProducts
+                .Where(p => p.id == id)
+                .Include(x => x.product)
+                .Include(x => x.user)
+                .First();
         }
         public void UpdateUserProduct(UserProduct userProduct)
         {

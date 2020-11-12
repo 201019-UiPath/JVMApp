@@ -74,6 +74,7 @@ function GetAllProducts() {
 
 function GetUserProducts() {
     console.log("GetUserProducts");
+    debugger;
     let allProducts = [];
     getData(`${baseUrl}/UserProduct/get/${CurrentUser.Id}`).then(
         result => {
@@ -106,9 +107,10 @@ function GetProduct(id = -5) {
 }
 
 function AddToUserProducts(i=-1) {
+    debugger;
     let userProduct = {
         id: 0,
-        customerId: CurrentUser.Id,
+        userId: CurrentUser.Id,
         productId: AllProducts[i].Id,
         quantity: 1
     }
