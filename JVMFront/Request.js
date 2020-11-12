@@ -78,7 +78,7 @@ function GetUserProducts() {
     getData(`${baseUrl}/UserProduct/get/${CurrentUser.Id}`).then(
         result => {
             result.forEach(element => {
-                allProducts.push(new UserProduct( element.id, CurrentUser, AllProducts.find(p=>p.id === element.productid) , element.quantity))
+                allProducts.push(new UserProduct( element.id, CurrentUser.Id, AllProducts.find(p=>p.id === element.productid) , element.quantity))
             });
 
 

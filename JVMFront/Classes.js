@@ -12,6 +12,6 @@ class Product{
 
 class UserProduct{
     constructor(id,customer,product, quantity){
-        this.Id = id; this.Customer = customer; this.Product = product; this.Quantity = quantity;
+        this.Id = id; this.CustomerId = customer; this.Product = product; this.Quantity = quantity;
     }
 }
