@@ -28,12 +28,12 @@ function GetUserRequest()
 }
 
 
-function SignUpRequest() {
+async function SignUpRequest() {
     let userName = document.querySelector('#SignUpNameInput').value;
     let userEmail = document.querySelector('#SignUpEmailInput').value;
     let user = new User(-69, userName, userEmail);
 
-    postData(`${baseUrl}/User/add`, user).then(
+    await postData(`${baseUrl}/User/add`, user).then(
         result => {
             
             // TODO: Change HTML to reflect successful signup.
@@ -45,10 +45,10 @@ function SignUpRequest() {
 
 }
 
-function GetAllProducts() {
+async function GetAllProducts() {
     // TODO: Arrange elements that need to be modified and added when the products are received.
     let allProducts = [];
-    getData(`${baseUrl}/Product/getall`).then(
+    await getData(`${baseUrl}/Product/getall`).then(
         result => {
             result.forEach(element => {
                 allProducts.push(new Product( element.id, element.name, element.cost, element.category))
@@ -62,9 +62,9 @@ function GetAllProducts() {
     return null;
 }
 
-function GetUserProducts(user = {}) {
+async function GetUserProducts(user = {}) {
     let allProducts = [];
-    getData(`${baseUrl}/User/products/get/${user.Email}`).then(
+    await getData(`${baseUrl}/User/products/get/${user.Email}`).then(
         result => {
             result.forEach(element => {
                 allProducts.push(new UserProduct( element.id, user, AllProducts.find(p=>p.id === element.productid) , element.quantity))
@@ -95,7 +95,7 @@ function GetProduct(id = -5) {
 }
 
 function AddToUserProducts(product= {}) {
-    postData(`${baseUrl}/User/products/add`, product).then(
+    postData(`${baseUrl}/User/products/add/${CurrentUser.Id}`, product).then(
         result => {
 
             // TODO: Change HTML to show successful product addition.
@@ -119,7 +119,20 @@ function UpdateExistingProduct(product={}){
         }
     )
 }
+function RemoveFromUserProducts(product= {}) {
+    // TODO: Does the API support this?
 
+    postData(`${baseUrl}/User/products/delete/${CurrentUser.Id}`, product).then(
+        result => {
+
+            // TODO: Change HTML to show successful product addition.
+        }, 
+        rejection => {
+            // TODO: Base jump with no parachute, I guess, I have no idea what to do here yet.
+
+        }
+    )
+}
 
 
 

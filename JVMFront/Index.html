@@ -11,31 +11,7 @@
     <title>Grocery List</title>
 </head>
 <body>
-    <div style="display:none;"class="container" id="PokemonSection">
-        <h1>AJAX demo</h1>
-        <form>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Enter Pokemon name or ID" id ="pokemonInput">
-            </div>
-            <input type="button" value="Get Pokemon" class="btn btn-secondary" onclick="GetPokemon()">
-        </form>
-        <!--Part of the html document i want to manipulate-->
-        <div class="pokemonResult container">
-            <img src=""/>
-        </div>
-    </div>
-    <div style="display:none;"class="container" id="DigimonSection">
-        <h1>Fetch API demo</h1>
-        <form>
-            <div class="form-group">
-                <input type="text" class="form-control" id="digimonInput" placeholder="Enter Digimon Name">
-            </div>
-            <input type="button" value="Get Digimon" class="btn btn-warning" onclick="GetDigimon()">
-        </form>
-        <div class="digimonResult container">
-            <img src=''/>
-        </div>
-    </div>
+    <h1>Online Grocery List</h1>
 
     <div id="SignInSection">
         <div class="container">
@@ -46,8 +22,8 @@
                     <p class="successPrompt" id="SignInSuccess"></p>
                 </div>
                 <input id="SignInSubmitButton" type="button" value="Sign in as existing user." class="btn btn-warning" onclick="GetUserRequest()">
-                <input id="SignUpButton" type="button" value="Hit this if you don't have an account already." class="btn btn-danger" onclick="ChangeLayoutForSignIn()">
             </form>
+            <input id="SignUpButton" type="button" value="Hit this if you don't have an account already." class="btn btn-danger" onclick="ChangeLayoutForSignIn()">
         </div>
     </div>
     <div style="display:none" id="SignUpSection">
@@ -64,10 +40,14 @@
             </form>
         </div>
     </div>
-
+    <div style="display: none;"id="UserChoices">
+        <p class="errorPrompt" id="UserChoiceError"></p>
+        <p class="successPrompt" id="UserChoiceSuccess"></p>
+        <input id="AllProductsButton" type="button" value="Show all products you can pick." class="btn btn-primary" onclick="DisplayAllProducts()">
+        <input id="UserProductsButton" type="button" value="Go back." class="btn btn-primary" onclick="DisplayUserProducts()">
+    </div>
     <div id="UserProductsSection">
         
-
     </div>
     <div id="AllProductsSection">
 
