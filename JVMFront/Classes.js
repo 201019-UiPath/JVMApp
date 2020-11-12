@@ -1,10 +1,6 @@
-class Customer{
-    constructor(name,email){
-        this.Name = name, this.Email = email;
-    }
-
-    constructor(id,name,email){
-        this.Id = id; this.Name = name, this.Email = email;
+class User{
+    constructor(id, name,email){
+        this.Id = id; this.Name = name; this.Email = email;
     }
 }
 
@@ -15,7 +11,7 @@ class Product{
 }
 
 class UserProduct{
-    constructor(customer,product, quantity){
-        this.Customer = customer; this.Product = product; this.Quantity = quantity;
+    constructor(id,customer,product, quantity){
+        this.Id = id; this.Customer = customer; this.Product = product; this.Quantity = quantity;
     }
 }
