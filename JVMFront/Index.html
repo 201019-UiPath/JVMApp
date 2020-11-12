@@ -12,22 +12,25 @@
 </head>
 <body>
     <div class="jumbotron">
-        <h1>Online Grocery List</h1>
-        <caption>Why would anyone need this?</caption>
+        <h1 class="text-white">Online Grocery List</h1>
+        <p class="text-white "><small><i>Why would anyone need this?</i></small></p>
     </div>
     
 
     <div id="SignInSection">
-        <div class="container">
+        <div class="container justify-content-center">
             <form>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="SignInEmailInput" placeholder="Enter Your Email">
+                    <input type="text" class="form-control col-sm-4 shadow-sm" id="SignInEmailInput" placeholder="Enter Your Email">
                     <p class="errorPrompt" id="SignInError"></p>
                     <p class="successPrompt" id="SignInSuccess"></p>
                 </div>
-                <input id="SignInSubmitButton" type="button" value="Sign in as existing user." class="btn btn-warning" onclick="GetUserRequest()">
+                <input id="SignInSubmitButton" type="button" value="Sign in " class="btn btn-primary shadow-lg" onclick="GetUserRequest()">
+                <input id="SignUpButton" type="button" value="Sign up" class="btn btn-secondary shadow-lg" onclick="ChangeLayoutForSignIn()">
             </form>
-            <input id="SignUpButton" type="button" value="Hit this if you don't have an account already." class="btn btn-danger" onclick="ChangeLayoutForSignIn()">
+        </div>
+        <div class="container">
+            
         </div>
     </div>
     <div style="display:none" id="SignUpSection">
@@ -39,8 +42,8 @@
                 <div class="form-group">
                     <input type="text" class="form-control" id="SignUpEmailInput" placeholder="Enter Your Email">
                 </div>
-                <input id="SignInSubmitButton" type="button" value="Sign up as new user" class="btn btn-warning" onclick="SignUpRequest()">
-                <input id="BackButton" type="button" value="Go back." class="btn btn-danger" onclick="ResetLayout()">
+                <input id="SignInSubmitButton" type="button" value="Sign up as new user" class="btn btn-primary" onclick="SignUpRequest()">
+                <input id="BackButton" type="button" value="Go back." class="btn btn-secondary" onclick="ResetLayout()">
             </form>
         </div>
     </div>
