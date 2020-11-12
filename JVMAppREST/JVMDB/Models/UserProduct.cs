@@ -15,5 +15,6 @@ namespace JVMDB.Models
         public int userId { get; set; }
         [ForeignKey("Prod_UserProd")]
         public int productId { get; set; }
+        public int quantity { get; set; }
     }
 }
