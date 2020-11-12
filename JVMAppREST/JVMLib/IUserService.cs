@@ -11,6 +11,7 @@ namespace JVMLib
         void DeleteUser(User user);
         List<User> GetAllUsers();
         User GetUserById(int id);
+        User GetUserByEmail(string email);
         void UpdateUser(User user);
     }
 }

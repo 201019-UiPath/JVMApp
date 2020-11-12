@@ -8,7 +8,7 @@ namespace JVMLib
     {
         private IUserRepo repo;
 
-        public UserService(IUserRepo repo)
+        public UserService(IRepo repo)
         {
             this.repo = repo;
         }
@@ -32,6 +32,11 @@ namespace JVMLib
         public User GetUserById(int id)
         {
             User user = repo.GetUserById(id);
+            return user;
+        }
+        public User GetUserByEmail(string email)
+        {
+            User user = repo.GetUserByEmail(email);
             return user;
         }
 

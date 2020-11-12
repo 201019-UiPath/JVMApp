@@ -8,7 +8,7 @@ namespace JVMLib
     {
         private IUserProductRepo repo;
 
-        public UserProductService(IUserProductRepo repo)
+        public UserProductService(IRepo repo)
         {
             this.repo = repo;
         }

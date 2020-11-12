@@ -10,6 +10,15 @@ namespace JVMDB
         public DbSet<Product> Products { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserProduct> UserProducts { get; set; }
+        public DBContext()
+        {
+
+        }
+        public DBContext(DbContextOptions<DbContext> options)
+            : base(options)
+        {
+
+        }
        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!(optionsBuilder.IsConfigured))
