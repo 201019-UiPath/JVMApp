@@ -5,7 +5,7 @@ using System.Text;
 
 namespace JVMDB.Repos
 {
-    public class DBRepo : IProductRepo, IUserProductRepo, IUserRepo
+    public class DBRepo :  IRepo
     {
         #region Product Methods
         public void AddProduct(Product product)

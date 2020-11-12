@@ -5,7 +5,7 @@ using System.Text;
 
 namespace JVMDB.Repos
 {
-    interface IUserRepo
+    public interface IUserRepo
     {
         void AddUser(User user);
         void DeleteUser(User user);

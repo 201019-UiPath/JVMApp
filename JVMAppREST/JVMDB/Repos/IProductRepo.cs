@@ -5,7 +5,7 @@ using System.Text;
 
 namespace JVMDB.Repos
 {
-    interface IProductRepo
+    public interface IProductRepo
     {
         void AddProduct(Product product);
         void DeleteProduct(Product product);
