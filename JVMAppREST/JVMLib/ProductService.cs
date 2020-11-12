@@ -1,35 +1,43 @@
 ﻿using JVMDB.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using JVMDB.Repos;
 
 namespace JVMLib
 {
     public class ProductService : IProductService
     {
+        private IProductRepo repo;
+
+        public ProductService(IProductRepo repo)
+        {
+            this.repo = repo;
+        }
+        
         public void AddProduct(Product product)
         {
-            throw new NotImplementedException();
+            repo.AddProduct(product);
         }
 
         public void DeleteProduct(Product product)
         {
-            throw new NotImplementedException();
+            repo.DeleteProduct(product);
         }
 
         public List<Product> GetAllProducts()
         {
-            throw new NotImplementedException();
+            List<Product> products = repo.GetAllProducts();
+            return products;
         }
 
         public Product GetProductById(int id)
         {
-            throw new NotImplementedException();
+            Product product = repo.GetProductById(id);
+            return product;
         }
 
         public void UpdateProduct(Product product)
         {
-            throw new NotImplementedException();
+            repo.UpdateProduct(product);
         }
     }
 }
