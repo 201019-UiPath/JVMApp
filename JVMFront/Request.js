@@ -1,3 +1,7 @@
+// This file is just for accessing the DB. 
+// It should be used to get objects and MAYBE update error/success prompts that show the user the progress. 
+
+
 var baseUrl = "https://localhost:5001/api"
 
 var CurrentUser;
