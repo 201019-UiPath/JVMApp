@@ -19,7 +19,7 @@ namespace JVMDB
                 .AddJsonFile("appsettings.json")
                 .Build();
 
-                var connectionString = configuration.GetConnectionString("StoreDB");
+                var connectionString = configuration.GetConnectionString("DBConnection");
                 optionsBuilder.UseNpgsql(connectionString);
             }
         }*/
