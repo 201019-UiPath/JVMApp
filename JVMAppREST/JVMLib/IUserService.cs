@@ -1,10 +1,11 @@
-﻿using System;
+﻿using JVMDB.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace JVMLib
 {
-    interface IUserService
+    public interface IUserService
     {
         void AddUser(User user);
         void DeleteUser(User user);
