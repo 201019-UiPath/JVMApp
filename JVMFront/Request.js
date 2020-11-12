@@ -36,7 +36,7 @@ function GetUserRequest()
 function SignUpRequest() {
     let userName = document.querySelector('#SignUpNameInput').value;
     let userEmail = document.querySelector('#SignUpEmailInput').value;
-    let user = new User(-69, userName, userEmail);
+    let user = new User(0, userName, userEmail);
 
     postData(`${baseUrl}/User/add`, user).then(
         result => {
@@ -62,14 +62,14 @@ function GetAllProducts() {
             });
             console.log(allProducts);
             console.log("GetAllProducts");
-            return allProducts;
+            
         },
         rejection => {
             
             // TODO: Base jump with no parachute, I guess, I have no idea what to do here yet.
         }
     )
-    return null;
+    return allProducts;
 }
 
 function GetUserProducts(user = {}) {

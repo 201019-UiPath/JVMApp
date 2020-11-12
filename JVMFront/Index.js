@@ -22,7 +22,8 @@ function DisplayAllProducts() {
     ClearPrompts();
     document.querySelector('#UserProductsSection').style = "display:none";
     document.querySelector('#UserProductsSection').innerHTML = "";
-    let products = GetAllProducts();
+    let products = [];
+    products = GetAllProducts();
     let tableRowMarkup = [];
 
     products.forEach(element => {
