@@ -1,35 +1,48 @@
 ﻿using JVMDB.Models;
-using JVMDB.Repos;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using JVMDB.Repos;
 
 namespace JVMLib
 {
     public class UserService : IUserService
     {
+        private IUserRepo repo;
+
+        public UserService(IRepo repo)
+        {
+            this.repo = repo;
+        }
+
         public void AddUser(User user)
         {
-            throw new NotImplementedException();
+            repo.AddUser(user);
         }
 
         public void DeleteUser(User user)
         {
-            throw new NotImplementedException();
+            repo.DeleteUser(user);
         }
 
         public List<User> GetAllUsers()
         {
-            throw new NotImplementedException();
+            List<User> users = repo.GetAllUsers();
+            return users;
         }
 
         public User GetUserById(int id)
         {
-            throw new NotImplementedException();
+            User user = repo.GetUserById(id);
+            return user;
         }
+        public User GetUserByEmail(string email)
+        {
+            User user = repo.GetUserByEmail(email);
+            return user;
+        }
+
         public void UpdateUser(User user)
         {
-            throw new NotImplementedException();
+            repo.UpdateUser(user);
         }
     }
 }
