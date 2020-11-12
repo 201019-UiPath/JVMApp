@@ -73,6 +73,19 @@ namespace JVMAPI.Controllers
                 return NotFound();
             }
         }
+        [HttpGet("get/{userId}")]
+        [Produces("application/json")]
+        public IActionResult GetAllProductsForUser(int userId)
+        {
+            try
+            {
+                return Ok(userProductService.GetAllProductsForUser(userId));
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
+        }
         [HttpGet("getAll")]
         [Produces("application/json")]
         public IActionResult GetAllUserProducts()

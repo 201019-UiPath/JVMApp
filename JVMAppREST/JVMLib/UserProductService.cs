@@ -29,6 +29,12 @@ namespace JVMLib
             return userProducts;
         }
 
+        public List<UserProduct> GetAllProductsForUser(int userId)
+        {
+            List<UserProduct> userProducts = repo.GetAllProductsForUser(userId);
+            return userProducts;
+        }
+
         public UserProduct GetUserProduct(int userId, int productId)
         {
             UserProduct userProduct = repo.GetUserProduct(userId, productId);

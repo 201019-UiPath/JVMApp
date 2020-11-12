@@ -94,6 +94,10 @@ namespace JVMDB.Repos
         {
             return context.UserProducts.Select(x => x).ToList();
         }
+        public List<UserProduct> GetAllProductsForUser(int userId)
+        {
+            return context.UserProducts.Where(x => x.userId == userId).ToList();
+        }
         public UserProduct GetUserProduct(int userId, int productId)
         {
             return context.UserProducts.Single(p => p.userId == userId && p.productId == productId);
