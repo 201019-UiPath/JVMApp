@@ -4,3 +4,32 @@
 .successPrompt{
     color: green;
 }
+.btn{
+    margin-top: 8px;
+}
+
+.jumbotron{
+    background-color: #004E64;
+}
+
+body{
+    background-color: #9FFFCB;
+}
+
+.btn-primary{
+    background-color: #25A18E;
+    border-width: 0;
+}
+
+.btn-secondary{
+    background-color: #00A5CF;
+    border-width: 0;
+}
+
+.btn {
+    transition-duration: 300ms;
+}
+.btn:hover{
+    background-color: #6c757d;
+    border-width: 0;
+}
