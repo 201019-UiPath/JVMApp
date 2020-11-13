@@ -39,14 +39,10 @@ function DisplayAllProducts() {
         tableRowMarkup += 
             `<tr onclick='AddProductToList(${index})'>
             <td>${element.Name}</td>
-            <td>${element.Category}</td>
+            <td>${ReturnProductCategoryAsString(element.Category)}</td>
             <td>$${element.Cost}</td>
         </tr>`;
     }
-    products.forEach(element => {
-        
-        
-    });
     console.log(tableRowMarkup)
     
 
@@ -81,9 +77,9 @@ function DisplayUserProducts() {
         tableRowMarkup.push(
             `<tr onclick='RemoveFromUserProducts(${element.Product})'>
             <td>${element.Product.name}</td>
-            <td>${element.Product.category}</td>
+            <td>${ReturnProductCategoryAsString(element.Product.category)}</td>
             <td>$${element.Product.cost}</td>
-            <td>$${element.Quantity}</td>
+            <td>${element.Quantity}</td>
         </tr>
         `
         )
@@ -103,7 +99,19 @@ function DisplayUserProducts() {
 
 
 
-
+function ReturnProductCategoryAsString(categoryId) {
+    switch (categoryId) {
+        case 0: return 'Beverage';
+        case 1: return 'Bread';
+        case 2: return 'Canned Goods';
+        case 3: return 'Dairy';
+        case 4: return 'Baking Goods';
+        case 5: return 'Frozen Food';
+        case 6: return 'Meat';
+        case 7: return 'Produce';
+        default: "No Category Found"
+    }
+}
 
 
 
